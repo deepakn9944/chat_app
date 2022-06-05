@@ -1,6 +1,6 @@
 const formidable = require('formidable');
 const validator = require('validator');
-const registerModel = require('../models/authModal');
+const registerModel = require('../models/authModel');
 const fs = require("fs");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -206,4 +206,9 @@ module.exports.userLogin = async (req, res) => {
             });
           }
        }
+}
+module.exports.userLogout = (req, res) => {
+  res.status(200).cookie('authToken', '').json({
+    success: true
+  })
 }
